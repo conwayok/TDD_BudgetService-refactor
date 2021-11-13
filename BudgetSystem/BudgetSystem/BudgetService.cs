@@ -55,7 +55,8 @@ namespace BudgetSystem
                     }
                     else
                     {
-                        overlappingStart = new DateTime(currentMonth.Year, currentMonth.Month, 1);
+                        overlappingStart = budget.FirstDay();
+                        // overlappingStart = new DateTime(currentMonth.Year, currentMonth.Month, 1);
 
                         var daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
                         overlappingEnd = new DateTime(currentMonth.Year, currentMonth.Month, daysInMonth);
@@ -95,5 +96,10 @@ namespace BudgetSystem
     {
         public int Amount { get; set; }
         public string YearMonth { get; set; }
+
+        public DateTime FirstDay()
+        {
+            return DateTime.ParseExact(YearMonth + "01", "yyyyMMdd", null);
+        }
     }
 }
