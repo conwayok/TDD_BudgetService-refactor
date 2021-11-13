@@ -11,35 +11,34 @@ namespace BudgetSystem
         public int Amount { get; set; }
         public string YearMonth { get; set; }
 
-        public Period CreatePeriod()
+        public decimal OverlappingAmount(Period period)
+        {
+            return period.OverlappingDays(CreatePeriod()) * DailyAmount();
+        }
+
+        private Period CreatePeriod()
         {
             return new Period(FirstDay(), LastDay());
         }
 
-        public int Days()
-        {
-            return DateTime.DaysInMonth(FirstDay().Year, FirstDay().Month);
-        }
-
-        public DateTime FirstDay()
-        {
-            return DateTime.ParseExact(YearMonth + "01", "yyyyMMdd", null);
-        }
-
-        public DateTime LastDay()
-        {
-            var daysInMonth = DateTime.DaysInMonth(FirstDay().Year, FirstDay().Month);
-            return DateTime.ParseExact(YearMonth + daysInMonth, "yyyyMMdd", null);
-        }
-
-        public decimal DailyAmount()
+        private decimal DailyAmount()
         {
             return Amount / (decimal)Days();
         }
 
-        public decimal OverlappingAmount(Period period)
+        private int Days()
         {
-            return period.OverlappingDays(CreatePeriod()) * DailyAmount();
+            return DateTime.DaysInMonth(FirstDay().Year, FirstDay().Month);
+        }
+
+        private DateTime FirstDay()
+        {
+            return DateTime.ParseExact(YearMonth + "01", "yyyyMMdd", null);
+        }
+
+        private DateTime LastDay()
+        {
+            return DateTime.ParseExact(YearMonth + Days(), "yyyyMMdd", null);
         }
     }
 }
