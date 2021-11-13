@@ -29,14 +29,10 @@ namespace BudgetSystem
             var amount = 0;
             if (start.ToString("yyyyMM") != end.ToString("yyyyMM"))
             {
-                var firstDayOfEndMonth = new DateTime(end.Year, end.Month, 1);
-                var daysOfEndMonth = (end - firstDayOfEndMonth).Days + 1;
-                amount += daysOfEndMonth * GetAmountForOneDay(end, budgets);
-
                 var currentMonth = new DateTime(start.Year, start.Month, 1);
-                var endFlag = new DateTime(end.Year, end.Month, 1);
+                // var endFlag = new DateTime(end.Year, end.Month+1, 1);
 
-                while (currentMonth < endFlag)
+                while (currentMonth <= end)
                 {
                     if (currentMonth.ToString("yyyyMM") == start.ToString("yyyyMM"))
                     {
@@ -44,6 +40,12 @@ namespace BudgetSystem
                             new DateTime(start.Year, start.Month, DateTime.DaysInMonth(start.Year, start.Month));
                         var days = (lastDayOfStartMonth - start).Days + 1;
                         amount += days * GetAmountForOneDay(start, budgets);
+                    }
+                    else if (currentMonth.ToString("yyyyMM") == end.ToString("yyyyMM"))
+                    {
+                        var firstDayOfEndMonth = new DateTime(end.Year, end.Month, 1);
+                        var daysOfEndMonth = (end - firstDayOfEndMonth).Days + 1;
+                        amount += daysOfEndMonth * GetAmountForOneDay(end, budgets);
                     }
                     else
                     {
