@@ -19,6 +19,11 @@ namespace BudgetSystem
 
         public int OverlappingDays(Period another)
         {
+            if (Start > End)
+            {
+                return 0;
+            }
+
             if (End < another.Start || Start > another.End)
             {
                 return 0;

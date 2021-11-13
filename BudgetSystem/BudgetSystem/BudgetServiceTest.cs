@@ -110,6 +110,19 @@ namespace BudgetSystem
         [Test]
         public void StartDateBiggerThanEndDate()
         {
+            GenerateFakeData(new List<Budget>
+                             {
+                                 new Budget()
+                                 {
+                                     YearMonth = "202111",
+                                     Amount = 3000
+                                 },
+                                 new Budget()
+                                 {
+                                     YearMonth = "202112",
+                                     Amount = 31000
+                                 }
+                             });
             var query = _budgetService.Query(new DateTime(2021, 12, 01), new DateTime(2021, 11, 01));
             Assert.AreEqual(0, query);
         }
