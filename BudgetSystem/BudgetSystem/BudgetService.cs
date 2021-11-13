@@ -18,8 +18,18 @@ namespace BudgetSystem
             if (start <= end)
             {
                 var allAmount = _budgetRepo.GetAll();
-                var yearMonth = start.ToString("yyyyMM");
-                return allAmount.FirstOrDefault(x => x.YearMonth.Equals(yearMonth)).Amount;
+
+                var startYearMonth = new DateTime(start.Year,start.Month,1);
+                var endYearMonth = new DateTime(end.Year,end.Month,1);
+                var amount=0;
+                while (startYearMonth<=endYearMonth)
+                {
+                    var yearMonth = startYearMonth.ToString("yyyyMM");
+                    amount+=allAmount.FirstOrDefault(x => x.YearMonth.Equals(yearMonth)).Amount;
+
+                    startYearMonth=startYearMonth.AddMonths(1);
+                }
+                return amount;
             }
             return 0;
         }

@@ -31,6 +31,14 @@ namespace BudgetSystem
             var query = _budgetService.Query(new DateTime(2021, 11, 01), new DateTime(2021, 11, 30));
             Assert.AreEqual(3000, query);
         }
+        
+        [Test]
+        public void TwoWholeMonth()
+        {
+            GenerateFakeData();
+            var query = _budgetService.Query(new DateTime(2021, 11, 01), new DateTime(2021, 12, 31));
+            Assert.AreEqual(34000, query);
+        }
 
         private void GenerateFakeData()
         {
@@ -40,6 +48,11 @@ namespace BudgetSystem
                 {
                     YearMonth = "202111",
                     Amount = 3000
+                },
+                new Budget()
+                {
+                    YearMonth = "202112",
+                    Amount = 31000
                 }
             });
         }
