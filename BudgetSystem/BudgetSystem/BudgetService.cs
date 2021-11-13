@@ -40,8 +40,7 @@ namespace BudgetSystem
                         continue;
                     }
 
-                    var overlappingDays = period.OverlappingDays(budget.CreatePeriod());
-                    amount += overlappingDays * budget.DailyAmount();
+                    amount += OverlappingAmount(period, budget);
 
                     currentMonth = currentMonth.AddMonths(1);
                 }
@@ -54,6 +53,11 @@ namespace BudgetSystem
             }
 
             return amount;
+        }
+
+        private static decimal OverlappingAmount(Period period, Budget budget)
+        {
+            return period.OverlappingDays(budget.CreatePeriod()) * budget.DailyAmount();
         }
 
         private int GetAmountForOneDay(DateTime start, Budget budget)
