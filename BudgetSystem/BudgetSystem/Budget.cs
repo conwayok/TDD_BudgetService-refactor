@@ -17,5 +17,10 @@ namespace BudgetSystem
             var daysInMonth = DateTime.DaysInMonth(FirstDay().Year, FirstDay().Month);
             return DateTime.ParseExact(YearMonth + daysInMonth, "yyyyMMdd", null);
         }
+
+        public Period CreatePeriod()
+        {
+            return new Period(FirstDay(), LastDay());
+        }
     }
 }
