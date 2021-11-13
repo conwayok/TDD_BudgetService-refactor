@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="893dd0c9-fc66-429e-864a-7107926f0932" name="Changes" comment="[refactor] move method CreatePeriod() to Budget class to remove smell: &quot;feature envy&quot;">
+    <list default="true" id="893dd0c9-fc66-429e-864a-7107926f0932" name="Changes" comment="[refactor] introduce variable: period, and move out of scope of while loop">
       <change beforePath="$PROJECT_DIR$/BudgetSystem/BudgetService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BudgetSystem/BudgetService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,27 +60,6 @@
       <option name="presentableId" value="Default" />
       <updated>1636791683550</updated>
       <workItem from="1636791689637" duration="4506000" />
-    </task>
-    <task id="LOCAL-00001" summary="[refactor] remove unused variable, and move allAmount out of if blocks to remove duplication">
-      <created>1636810748033</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1636810748033</updated>
-    </task>
-    <task id="LOCAL-00002" summary="[refactor] rename variable: budgets">
-      <created>1636810776272</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1636810776272</updated>
-    </task>
-    <task id="LOCAL-00003" summary="[refactor] invert if and move invalid period check at beginning of method">
-      <created>1636810820874</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1636810820874</updated>
     </task>
     <task id="LOCAL-00004" summary="[refactor] remove duplicated if block">
       <created>1636810860359</created>
@@ -369,7 +348,63 @@
       <option name="project" value="LOCAL" />
       <updated>1636813529439</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="[refactor] inline method">
+      <created>1636813576703</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813576703</updated>
+    </task>
+    <task id="LOCAL-00046" summary="[refactor] replace with false and remove unreachable code">
+      <created>1636813600956</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813600956</updated>
+    </task>
+    <task id="LOCAL-00047" summary="[refactor] introduce variable: daysInMonth">
+      <created>1636813630859</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813630859</updated>
+    </task>
+    <task id="LOCAL-00048" summary="[refactor] use budget.Days() behavior">
+      <created>1636813717918</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813717918</updated>
+    </task>
+    <task id="LOCAL-00049" summary="[refactor] inline variable">
+      <created>1636813732660</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813732660</updated>
+    </task>
+    <task id="LOCAL-00050" summary="[refactor] extract method DailyAmount() and change return type as decimal">
+      <created>1636813796959</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813796959</updated>
+    </task>
+    <task id="LOCAL-00051" summary="[refactor] move method DailyAmount() to Budget class">
+      <created>1636813828134</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813828134</updated>
+    </task>
+    <task id="LOCAL-00052" summary="[refactor] introduce variable: period, and move out of scope of while loop">
+      <created>1636813864777</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813864777</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,14 +439,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="[refactor] use overlapping logic when middle months" />
-    <MESSAGE value="[refactor] remove duplication code by move out of if/else blocks" />
-    <MESSAGE value="[refactor] use the same logic of overlappingEnd when start and middle months" />
-    <MESSAGE value="[refactor] introduce parameter: budget of GetAmountForOneDay() and remove unused parameter: budgets" />
-    <MESSAGE value="[refactor] introduce variable: budget" />
-    <MESSAGE value="[refactor]move budget declaration at beginning of while loop" />
-    <MESSAGE value="[refactor] add budget is null should continue while loop" />
-    <MESSAGE value="[refactor] use budget.YearMonth for check start budget, instead of currentMonth" />
     <MESSAGE value="[refactor] use budget.YearMonth for checking end budget, instead of currentMonth" />
     <MESSAGE value="[refactor] use budget.FirstDay() as overlappingStart when middle month" />
     <MESSAGE value="[refactor] use budget.LastDay() as overlappingEnd when middle months" />
@@ -429,6 +456,14 @@
     <MESSAGE value="[refactor] introduce parameter: another Period of OverlappingDays() and remove unused parameter: budget" />
     <MESSAGE value="[refactor] extract method: CreatePeriod()" />
     <MESSAGE value="[refactor] move method CreatePeriod() to Budget class to remove smell: &quot;feature envy&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="[refactor] move method CreatePeriod() to Budget class to remove smell: &quot;feature envy&quot;" />
+    <MESSAGE value="[refactor] inline method" />
+    <MESSAGE value="[refactor] replace with false and remove unreachable code" />
+    <MESSAGE value="[refactor] introduce variable: daysInMonth" />
+    <MESSAGE value="[refactor] use budget.Days() behavior" />
+    <MESSAGE value="[refactor] inline variable" />
+    <MESSAGE value="[refactor] extract method DailyAmount() and change return type as decimal" />
+    <MESSAGE value="[refactor] move method DailyAmount() to Budget class" />
+    <MESSAGE value="[refactor] introduce variable: period, and move out of scope of while loop" />
+    <option name="LAST_COMMIT_MESSAGE" value="[refactor] introduce variable: period, and move out of scope of while loop" />
   </component>
 </project>

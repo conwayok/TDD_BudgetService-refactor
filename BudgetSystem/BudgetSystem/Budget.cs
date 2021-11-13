@@ -36,5 +36,10 @@ namespace BudgetSystem
         {
             return Amount / (decimal)Days();
         }
+
+        public decimal OverlappingAmount(Period period)
+        {
+            return period.OverlappingDays(CreatePeriod()) * DailyAmount();
+        }
     }
 }
