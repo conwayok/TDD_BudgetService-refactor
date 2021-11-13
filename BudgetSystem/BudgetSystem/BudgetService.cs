@@ -27,10 +27,6 @@ namespace BudgetSystem
             var budgets = _budgetRepo.GetAll();
 
             var amount = 0;
-            // var startYearMonth = new DateTime(start.Year, start.Month, 1);
-            // var lendYearMonth = new DateTime(end.Year, end.Month, 1);
-
-            // if (startYearMonth != lendYearMonth)
             if (start.ToString("yyyyMM") != end.ToString("yyyyMM"))
             {
                 var lastDayOfStartMonth =
