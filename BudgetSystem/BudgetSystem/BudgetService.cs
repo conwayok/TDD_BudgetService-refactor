@@ -30,10 +30,7 @@ namespace BudgetSystem
             if (start.ToString("yyyyMM") != end.ToString("yyyyMM"))
             {
                 var period = new Period(start, end);
-                foreach (var budget in budgets)
-                {
-                    amount += budget.OverlappingAmount(period);
-                }
+                amount += budgets.Sum(budget => budget.OverlappingAmount(period));
             }
             else
             {
