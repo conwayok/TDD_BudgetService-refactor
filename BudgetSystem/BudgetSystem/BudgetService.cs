@@ -41,7 +41,7 @@ namespace BudgetSystem
 
                     DateTime overlappingStart;
                     DateTime overlappingEnd;
-                    if (currentMonth.ToString("yyyyMM") == start.ToString("yyyyMM"))
+                    if (budget.YearMonth == start.ToString("yyyyMM"))
                     {
                         overlappingStart = start;
 
