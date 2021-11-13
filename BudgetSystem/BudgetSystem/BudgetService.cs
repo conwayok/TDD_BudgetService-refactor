@@ -30,7 +30,6 @@ namespace BudgetSystem
             if (start.ToString("yyyyMM") != end.ToString("yyyyMM"))
             {
                 var currentMonth = new DateTime(start.Year, start.Month, 1);
-                // var endFlag = new DateTime(end.Year, end.Month+1, 1);
 
                 while (currentMonth <= end)
                 {
@@ -39,7 +38,7 @@ namespace BudgetSystem
                         var lastDayOfStartMonth =
                             new DateTime(start.Year, start.Month, DateTime.DaysInMonth(start.Year, start.Month));
                         var days = (lastDayOfStartMonth - start).Days + 1;
-                        amount += days * GetAmountForOneDay(start, budgets);
+                        amount += days * GetAmountForOneDay(currentMonth, budgets);
                     }
                     else if (currentMonth.ToString("yyyyMM") == end.ToString("yyyyMM"))
                     {
