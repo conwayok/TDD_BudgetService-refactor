@@ -36,21 +36,19 @@ namespace BudgetSystem
                     int overlappingDays;
                     if (currentMonth.ToString("yyyyMM") == start.ToString("yyyyMM"))
                     {
-                        var lastDayOfStartMonth =
+                        var overlappingEnd =
                             new DateTime(start.Year, start.Month, DateTime.DaysInMonth(start.Year, start.Month));
-                        overlappingDays = (lastDayOfStartMonth - start).Days + 1;
-                        // amount += overlappingDays * GetAmountForOneDay(currentMonth, budgets);
+                        var overlappingStart = start;
+                        overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
                     }
                     else if (currentMonth.ToString("yyyyMM") == end.ToString("yyyyMM"))
                     {
                         var firstDayOfEndMonth = new DateTime(end.Year, end.Month, 1);
                         overlappingDays = (end - firstDayOfEndMonth).Days + 1;
-                        // amount += overlappingDays * GetAmountForOneDay(currentMonth, budgets);
                     }
                     else
                     {
                         overlappingDays = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
-                        // amount += overlappingDays * GetAmountForOneDay(currentMonth, budgets);
                     }
 
                     amount += overlappingDays * GetAmountForOneDay(currentMonth, budgets);
