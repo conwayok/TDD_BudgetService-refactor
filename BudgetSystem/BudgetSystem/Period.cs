@@ -22,21 +22,23 @@ namespace BudgetSystem
             DateTime overlappingStart = Start > budget.FirstDay()
                 ? Start
                 : budget.FirstDay();
-            DateTime overlappingEnd;
+            DateTime overlappingEnd = End < budget.LastDay()
+                ? End
+                : budget.LastDay();
             if (budget.YearMonth == Start.ToString("yyyyMM"))
             {
                 // overlappingStart = Start;
-                overlappingEnd = budget.LastDay();
+                // overlappingEnd = budget.LastDay();
             }
             else if (budget.YearMonth == End.ToString("yyyyMM"))
             {
                 // overlappingStart = budget.FirstDay();
-                overlappingEnd = End;
+                // overlappingEnd = End;
             }
             else
             {
                 // overlappingStart = budget.FirstDay();
-                overlappingEnd = budget.LastDay();
+                // overlappingEnd = budget.LastDay();
             }
 
             var overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
