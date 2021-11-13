@@ -49,7 +49,11 @@ namespace BudgetSystem
                     }
                     else
                     {
-                        overlappingDays = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
+                        var daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
+
+                        var overlappingEnd = new DateTime(currentMonth.Year, currentMonth.Month, daysInMonth);
+                        var overlappingStart = new DateTime(currentMonth.Year, currentMonth.Month, 1);
+                        overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
                     }
 
                     amount += overlappingDays * GetAmountForOneDay(currentMonth, budgets);
