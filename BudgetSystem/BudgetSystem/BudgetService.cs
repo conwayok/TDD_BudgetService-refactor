@@ -19,49 +19,50 @@ namespace BudgetSystem
 
         public decimal Query(DateTime start, DateTime end)
         {
+            if (start > end)
+            {
+                return 0;
+            }
+
             var budgets = _budgetRepo.GetAll();
+
             if (start == end)
             {
                 return GetAmountForOneDay(start, budgets);
             }
 
-            if (start < end)
+            var amount = 0;
+            var startYearMonth = new DateTime(start.Year, start.Month, 1);
+            var lendYearMonth = new DateTime(end.Year, end.Month, 1);
+
+            if (startYearMonth != lendYearMonth)
             {
-                var amount = 0;
-                var startYearMonth = new DateTime(start.Year, start.Month, 1);
-                var lendYearMonth = new DateTime(end.Year, end.Month, 1);
+                var lastDayOfStartMonth =
+                    new DateTime(start.Year, start.Month, DateTime.DaysInMonth(start.Year, start.Month));
+                var days = (lastDayOfStartMonth - start).Days + 1;
+                amount += days * GetAmountForOneDay(start, budgets);
 
-                if (startYearMonth != lendYearMonth)
+                var firstDayOfEndMonth = new DateTime(end.Year, end.Month, 1);
+                days = (end - firstDayOfEndMonth).Days + 1;
+                amount += days * GetAmountForOneDay(end, budgets);
+
+                var secondYearMonth = new DateTime(start.Year, start.Month + 1, 1);
+                var lastSecondEndYearMonth = new DateTime(end.Year, end.Month - 1, 1);
+
+                while (secondYearMonth <= lastSecondEndYearMonth)
                 {
-                    var lastDayOfStartMonth =
-                        new DateTime(start.Year, start.Month, DateTime.DaysInMonth(start.Year, start.Month));
-                    var days = (lastDayOfStartMonth - start).Days + 1;
-                    amount += days * GetAmountForOneDay(start, budgets);
+                    var yearMonth = secondYearMonth.ToString("yyyyMM");
+                    amount += GetAmountForAllMonth(budgets, yearMonth);
 
-                    var firstDayOfEndMonth = new DateTime(end.Year, end.Month, 1);
-                    days = (end - firstDayOfEndMonth).Days + 1;
-                    amount += days * GetAmountForOneDay(end, budgets);
-
-                    var secondYearMonth = new DateTime(start.Year, start.Month + 1, 1);
-                    var lastSecondEndYearMonth = new DateTime(end.Year, end.Month - 1, 1);
-
-                    while (secondYearMonth <= lastSecondEndYearMonth)
-                    {
-                        var yearMonth = secondYearMonth.ToString("yyyyMM");
-                        amount += GetAmountForAllMonth(budgets, yearMonth);
-
-                        secondYearMonth = secondYearMonth.AddMonths(1);
-                    }
+                    secondYearMonth = secondYearMonth.AddMonths(1);
                 }
-                else
-                {
-                    return ((end - start).Days + 1) * GetAmountForOneDay(start, budgets);
-                }
-
-                return amount;
+            }
+            else
+            {
+                return ((end - start).Days + 1) * GetAmountForOneDay(start, budgets);
             }
 
-            return 0;
+            return amount;
         }
 
         private static int GetAmountForAllMonth(List<Budget> allAmount, string yearMonth)
