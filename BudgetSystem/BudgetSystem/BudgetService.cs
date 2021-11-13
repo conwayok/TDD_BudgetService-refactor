@@ -26,20 +26,15 @@ namespace BudgetSystem
 
             var budgets = _budgetRepo.GetAll();
 
-            var amount = 0m;
             if (start.ToString("yyyyMM") != end.ToString("yyyyMM"))
             {
                 var period = new Period(start, end);
-                amount += budgets.Sum(budget => budget.OverlappingAmount(period));
-            }
-            else
-            {
-                return ((end - start).Days + 1) *
-                    GetAmountForOneDay(
-                        start, budgets.FirstOrDefault(x => x.YearMonth.Equals(start.ToString("yyyyMM"))));
+                return budgets.Sum(budget => budget.OverlappingAmount(period));
             }
 
-            return amount;
+            return ((end - start).Days + 1) *
+                GetAmountForOneDay(
+                    start, budgets.FirstOrDefault(x => x.YearMonth.Equals(start.ToString("yyyyMM"))));
         }
 
         private int GetAmountForOneDay(DateTime start, Budget budget)
