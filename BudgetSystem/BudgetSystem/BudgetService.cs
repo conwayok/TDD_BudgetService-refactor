@@ -45,20 +45,17 @@ namespace BudgetSystem
                     {
                         overlappingStart = start;
 
-                        var daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
-                        overlappingEnd = new DateTime(currentMonth.Year, currentMonth.Month, daysInMonth);
+                        // var daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
+                        overlappingEnd = budget.LastDay();
                     }
                     else if (budget.YearMonth == end.ToString("yyyyMM"))
                     {
-                        overlappingStart = new DateTime(end.Year, end.Month, 1);
+                        overlappingStart = budget.FirstDay();
                         overlappingEnd = end;
                     }
                     else
                     {
                         overlappingStart = budget.FirstDay();
-
-                        // var daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
-                        // overlappingEnd = new DateTime(currentMonth.Year, currentMonth.Month, daysInMonth);
                         overlappingEnd = budget.LastDay();
                     }
 
