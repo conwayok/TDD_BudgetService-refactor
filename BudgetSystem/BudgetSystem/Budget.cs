@@ -1,4 +1,8 @@
-﻿using System;
+﻿#region
+
+using System;
+
+#endregion
 
 namespace BudgetSystem
 {
@@ -6,6 +10,16 @@ namespace BudgetSystem
     {
         public int Amount { get; set; }
         public string YearMonth { get; set; }
+
+        public Period CreatePeriod()
+        {
+            return new Period(FirstDay(), LastDay());
+        }
+
+        public int Days()
+        {
+            return DateTime.DaysInMonth(FirstDay().Year, FirstDay().Month);
+        }
 
         public DateTime FirstDay()
         {
@@ -16,11 +30,6 @@ namespace BudgetSystem
         {
             var daysInMonth = DateTime.DaysInMonth(FirstDay().Year, FirstDay().Month);
             return DateTime.ParseExact(YearMonth + daysInMonth, "yyyyMMdd", null);
-        }
-
-        public Period CreatePeriod()
-        {
-            return new Period(FirstDay(), LastDay());
         }
     }
 }

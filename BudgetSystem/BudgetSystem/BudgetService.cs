@@ -40,7 +40,7 @@ namespace BudgetSystem
                     }
 
                     var overlappingDays = new Period(start, end).OverlappingDays(budget.CreatePeriod());
-                    var daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
+                    var daysInMonth = budget.Days();
                     amount += overlappingDays *
                         (budget.Amount / daysInMonth);
 
