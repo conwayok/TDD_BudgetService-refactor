@@ -48,8 +48,10 @@ namespace BudgetSystem
                     }
                     else
                     {
-                        var yearMonth = currentMonth.ToString("yyyyMM");
-                        amount += GetAmountForAllMonth(budgets, yearMonth);
+                        // var yearMonth = currentMonth.ToString("yyyyMM");
+                        // amount += GetAmountForAllMonth(budgets, yearMonth);
+                        var overlappingDays = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
+                        amount += overlappingDays * GetAmountForOneDay(currentMonth, budgets);
                     }
 
                     currentMonth = currentMonth.AddMonths(1);
