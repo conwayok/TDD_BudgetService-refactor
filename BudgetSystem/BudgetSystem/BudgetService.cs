@@ -37,16 +37,17 @@ namespace BudgetSystem
                     DateTime overlappingEnd;
                     if (currentMonth.ToString("yyyyMM") == start.ToString("yyyyMM"))
                     {
-                        overlappingEnd = new DateTime(start.Year, start.Month,
-                                                      DateTime.DaysInMonth(start.Year, start.Month));
+                        var daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
+
+                        overlappingEnd = new DateTime(currentMonth.Year, currentMonth.Month, daysInMonth);
+                        // overlappingEnd = new DateTime(start.Year, start.Month,
+                        //                               DateTime.DaysInMonth(start.Year, start.Month));
                         overlappingStart = start;
-                        // overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
                     }
                     else if (currentMonth.ToString("yyyyMM") == end.ToString("yyyyMM"))
                     {
                         overlappingStart = new DateTime(end.Year, end.Month, 1);
                         overlappingEnd = end;
-                        // overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
                     }
                     else
                     {
