@@ -37,12 +37,10 @@ namespace BudgetSystem
                     DateTime overlappingEnd;
                     if (currentMonth.ToString("yyyyMM") == start.ToString("yyyyMM"))
                     {
-                        var daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
-
-                        overlappingEnd = new DateTime(currentMonth.Year, currentMonth.Month, daysInMonth);
-                        // overlappingEnd = new DateTime(start.Year, start.Month,
-                        //                               DateTime.DaysInMonth(start.Year, start.Month));
                         overlappingStart = start;
+
+                        var daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
+                        overlappingEnd = new DateTime(currentMonth.Year, currentMonth.Month, daysInMonth);
                     }
                     else if (currentMonth.ToString("yyyyMM") == end.ToString("yyyyMM"))
                     {
@@ -51,29 +49,33 @@ namespace BudgetSystem
                     }
                     else
                     {
-                        var daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
-
-                        overlappingEnd = new DateTime(currentMonth.Year, currentMonth.Month, daysInMonth);
                         overlappingStart = new DateTime(currentMonth.Year, currentMonth.Month, 1);
+
+                        var daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
+                        overlappingEnd = new DateTime(currentMonth.Year, currentMonth.Month, daysInMonth);
                     }
 
                     var overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
-                    amount += overlappingDays * GetAmountForOneDay(currentMonth, budgets);
+                    amount += overlappingDays *
+                        GetAmountForOneDay(currentMonth,
+                                           budgets.FirstOrDefault(
+                                               x => x.YearMonth.Equals(currentMonth.ToString("yyyyMM"))));
 
                     currentMonth = currentMonth.AddMonths(1);
                 }
             }
             else
             {
-                return ((end - start).Days + 1) * GetAmountForOneDay(start, budgets);
+                return ((end - start).Days + 1) *
+                    GetAmountForOneDay(
+                        start, budgets.FirstOrDefault(x => x.YearMonth.Equals(start.ToString("yyyyMM"))));
             }
 
             return amount;
         }
 
-        private int GetAmountForOneDay(DateTime start, List<Budget> allAmount)
+        private int GetAmountForOneDay(DateTime start, Budget budget)
         {
-            var budget = allAmount.FirstOrDefault(x => x.YearMonth.Equals(start.ToString("yyyyMM")));
             return budget == null
                 ? 0
                 : budget.Amount /
