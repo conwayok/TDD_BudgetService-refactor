@@ -35,8 +35,8 @@ namespace BudgetSystem
                 amount += days * GetAmountForOneDay(start, budgets);
 
                 var firstDayOfEndMonth = new DateTime(end.Year, end.Month, 1);
-                days = (end - firstDayOfEndMonth).Days + 1;
-                amount += days * GetAmountForOneDay(end, budgets);
+                var daysOfEndMonth = (end - firstDayOfEndMonth).Days + 1;
+                amount += daysOfEndMonth * GetAmountForOneDay(end, budgets);
 
                 var secondYearMonth = new DateTime(start.Year, start.Month + 1, 1);
                 var lastSecondEndYearMonth = new DateTime(end.Year, end.Month - 1, 1);
