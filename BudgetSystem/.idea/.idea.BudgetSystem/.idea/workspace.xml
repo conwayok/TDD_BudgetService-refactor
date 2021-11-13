@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="893dd0c9-fc66-429e-864a-7107926f0932" name="Changes" comment="clean up code">
-      <change beforePath="$PROJECT_DIR$/BudgetSystem/Period.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BudgetSystem/Period.cs" afterDir="false" />
+    <list default="true" id="893dd0c9-fc66-429e-864a-7107926f0932" name="Changes" comment="[refactor] move method CreatePeriod() to Budget class to remove smell: &quot;feature envy&quot;">
+      <change beforePath="$PROJECT_DIR$/BudgetSystem/BudgetService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BudgetSystem/BudgetService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +299,77 @@
       <option name="project" value="LOCAL" />
       <updated>1636813192166</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="[refactor] use overlapping domain for overlappingStart">
+      <created>1636813258232</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813258232</updated>
+    </task>
+    <task id="LOCAL-00036" summary="[refactor] use overlapping domain for overlappingEnd">
+      <created>1636813299418</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813299418</updated>
+    </task>
+    <task id="LOCAL-00037" summary="clean up code">
+      <created>1636813318923</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813318923</updated>
+    </task>
+    <task id="LOCAL-00038" summary="[refactor] introduce temp variables: firstDay and lastDay">
+      <created>1636813353817</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813353817</updated>
+    </task>
+    <task id="LOCAL-00039" summary="[refactor] create a variable: another Period from budget.firstDay() and budget.LastDay()">
+      <created>1636813389725</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813389725</updated>
+    </task>
+    <task id="LOCAL-00040" summary="[refactor] use another for firstDay and lastDay, instead of budget">
+      <created>1636813423546</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813423546</updated>
+    </task>
+    <task id="LOCAL-00041" summary="[refactor] inline temp variables">
+      <created>1636813434511</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813434511</updated>
+    </task>
+    <task id="LOCAL-00042" summary="[refactor] introduce parameter: another Period of OverlappingDays() and remove unused parameter: budget">
+      <created>1636813475915</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813475915</updated>
+    </task>
+    <task id="LOCAL-00043" summary="[refactor] extract method: CreatePeriod()">
+      <created>1636813497341</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813497341</updated>
+    </task>
+    <task id="LOCAL-00044" summary="[refactor] move method CreatePeriod() to Budget class to remove smell: &quot;feature envy&quot;">
+      <created>1636813529439</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1636813529439</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,15 +404,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="[refactor] move amountOfStartBudget into while loop, and adjust currentMonth assignment to include start" />
-    <MESSAGE value="[refactor] move amountOfEndBudget into while loop and simplify endFlag as end" />
-    <MESSAGE value="[refactor] use currentMonth when start budget" />
-    <MESSAGE value="[refactor] use currentMonth when end budget" />
-    <MESSAGE value="[refactor] rename variable: overlappingDays" />
-    <MESSAGE value="[refactor] use GetAmountForOneDay() when middle months" />
-    <MESSAGE value="[refactor] remove duplication by move out of if/else blocks" />
-    <MESSAGE value="[refactor] rename variable by overlapping domain" />
-    <MESSAGE value="[refactor] rename variable by overlapping domain when end month" />
     <MESSAGE value="[refactor] use overlapping logic when middle months" />
     <MESSAGE value="[refactor] remove duplication code by move out of if/else blocks" />
     <MESSAGE value="[refactor] use the same logic of overlappingEnd when start and middle months" />
@@ -358,7 +419,16 @@
     <MESSAGE value="[refactor]extract method: OverlappingDays()" />
     <MESSAGE value="[refactor] transform parameter object: Period from start and end" />
     <MESSAGE value="[refactor] move OverlappingDays() to Period class to remove smell of &quot;feature envy&quot;" />
+    <MESSAGE value="[refactor] use overlapping domain for overlappingStart" />
+    <MESSAGE value="[refactor] use overlapping domain for overlappingEnd" />
     <MESSAGE value="clean up code" />
-    <option name="LAST_COMMIT_MESSAGE" value="clean up code" />
+    <MESSAGE value="[refactor] introduce temp variables: firstDay and lastDay" />
+    <MESSAGE value="[refactor] create a variable: another Period from budget.firstDay() and budget.LastDay()" />
+    <MESSAGE value="[refactor] use another for firstDay and lastDay, instead of budget" />
+    <MESSAGE value="[refactor] inline temp variables" />
+    <MESSAGE value="[refactor] introduce parameter: another Period of OverlappingDays() and remove unused parameter: budget" />
+    <MESSAGE value="[refactor] extract method: CreatePeriod()" />
+    <MESSAGE value="[refactor] move method CreatePeriod() to Budget class to remove smell: &quot;feature envy&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="[refactor] move method CreatePeriod() to Budget class to remove smell: &quot;feature envy&quot;" />
   </component>
 </project>
