@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="893dd0c9-fc66-429e-864a-7107926f0932" name="Changes" comment="">
+    <list default="true" id="893dd0c9-fc66-429e-864a-7107926f0932" name="Changes" comment="[refactor] remove duplicated if block">
       <change beforePath="$PROJECT_DIR$/BudgetSystem/BudgetService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BudgetSystem/BudgetService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +57,35 @@
       <updated>1636791683550</updated>
       <workItem from="1636791689637" duration="4506000" />
     </task>
+    <task id="LOCAL-00001" summary="[refactor] remove unused variable, and move allAmount out of if blocks to remove duplication">
+      <created>1636810748033</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1636810748033</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[refactor] rename variable: budgets">
+      <created>1636810776272</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1636810776272</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[refactor] invert if and move invalid period check at beginning of method">
+      <created>1636810820874</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1636810820874</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[refactor] remove duplicated if block">
+      <created>1636810860359</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1636810860359</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -79,5 +108,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="[refactor] remove unused variable, and move allAmount out of if blocks to remove duplication" />
+    <MESSAGE value="[refactor] rename variable: budgets" />
+    <MESSAGE value="[refactor] invert if and move invalid period check at beginning of method" />
+    <MESSAGE value="[refactor] remove duplicated if block" />
+    <option name="LAST_COMMIT_MESSAGE" value="[refactor] remove duplicated if block" />
   </component>
 </project>
