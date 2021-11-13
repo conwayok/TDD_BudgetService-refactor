@@ -33,6 +33,7 @@ namespace BudgetSystem
 
                 while (currentMonth <= end)
                 {
+                    var budget = budgets.FirstOrDefault(x => x.YearMonth.Equals(currentMonth.ToString("yyyyMM")));
                     DateTime overlappingStart;
                     DateTime overlappingEnd;
                     if (currentMonth.ToString("yyyyMM") == start.ToString("yyyyMM"))
@@ -56,7 +57,6 @@ namespace BudgetSystem
                     }
 
                     var overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
-                    var budget = budgets.FirstOrDefault(x => x.YearMonth.Equals(currentMonth.ToString("yyyyMM")));
                     amount += overlappingDays * GetAmountForOneDay(currentMonth, budget);
 
                     currentMonth = currentMonth.AddMonths(1);
