@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="893dd0c9-fc66-429e-864a-7107926f0932" name="Changes" comment="[refactor] remove duplicated if block">
+    <list default="true" id="893dd0c9-fc66-429e-864a-7107926f0932" name="Changes" comment="[refactor] simplify endFlag assignment and condition of while loop">
       <change beforePath="$PROJECT_DIR$/BudgetSystem/BudgetService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BudgetSystem/BudgetService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +85,42 @@
       <option name="project" value="LOCAL" />
       <updated>1636810860359</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="[refactor] simplify condition of query cross months">
+      <created>1636810937102</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1636810937102</updated>
+    </task>
+    <task id="LOCAL-00006" summary="clean up">
+      <created>1636810946167</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1636810946167</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[refactor] declare independent variable for different purposes">
+      <created>1636811012556</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1636811012556</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[refactor] rename variables: currentMonth and endFlag">
+      <created>1636811097651</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1636811097651</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[refactor] simplify endFlag assignment and condition of while loop">
+      <created>1636811128032</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1636811128032</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,6 +147,11 @@
     <MESSAGE value="[refactor] rename variable: budgets" />
     <MESSAGE value="[refactor] invert if and move invalid period check at beginning of method" />
     <MESSAGE value="[refactor] remove duplicated if block" />
-    <option name="LAST_COMMIT_MESSAGE" value="[refactor] remove duplicated if block" />
+    <MESSAGE value="[refactor] simplify condition of query cross months" />
+    <MESSAGE value="clean up" />
+    <MESSAGE value="[refactor] declare independent variable for different purposes" />
+    <MESSAGE value="[refactor] rename variables: currentMonth and endFlag" />
+    <MESSAGE value="[refactor] simplify endFlag assignment and condition of while loop" />
+    <option name="LAST_COMMIT_MESSAGE" value="[refactor] simplify endFlag assignment and condition of while loop" />
   </component>
 </project>

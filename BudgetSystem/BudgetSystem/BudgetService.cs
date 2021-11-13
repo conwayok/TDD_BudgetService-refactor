@@ -29,22 +29,27 @@ namespace BudgetSystem
             var amount = 0;
             if (start.ToString("yyyyMM") != end.ToString("yyyyMM"))
             {
-                var lastDayOfStartMonth =
-                    new DateTime(start.Year, start.Month, DateTime.DaysInMonth(start.Year, start.Month));
-                var days = (lastDayOfStartMonth - start).Days + 1;
-                amount += days * GetAmountForOneDay(start, budgets);
-
                 var firstDayOfEndMonth = new DateTime(end.Year, end.Month, 1);
                 var daysOfEndMonth = (end - firstDayOfEndMonth).Days + 1;
                 amount += daysOfEndMonth * GetAmountForOneDay(end, budgets);
 
-                var currentMonth = new DateTime(start.Year, start.Month + 1, 1);
+                var currentMonth = new DateTime(start.Year, start.Month, 1);
                 var endFlag = new DateTime(end.Year, end.Month, 1);
 
                 while (currentMonth < endFlag)
                 {
-                    var yearMonth = currentMonth.ToString("yyyyMM");
-                    amount += GetAmountForAllMonth(budgets, yearMonth);
+                    if (currentMonth.ToString("yyyyMM") == start.ToString("yyyyMM"))
+                    {
+                        var lastDayOfStartMonth =
+                            new DateTime(start.Year, start.Month, DateTime.DaysInMonth(start.Year, start.Month));
+                        var days = (lastDayOfStartMonth - start).Days + 1;
+                        amount += days * GetAmountForOneDay(start, budgets);
+                    }
+                    else
+                    {
+                        var yearMonth = currentMonth.ToString("yyyyMM");
+                        amount += GetAmountForAllMonth(budgets, yearMonth);
+                    }
 
                     currentMonth = currentMonth.AddMonths(1);
                 }
