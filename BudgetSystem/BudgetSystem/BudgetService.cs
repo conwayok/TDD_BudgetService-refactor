@@ -19,10 +19,10 @@ namespace BudgetSystem
 
         public decimal Query(DateTime start, DateTime end)
         {
-            var allAmount = _budgetRepo.GetAll();
+            var budgets = _budgetRepo.GetAll();
             if (start == end)
             {
-                return GetAmountForOneDay(start, allAmount);
+                return GetAmountForOneDay(start, budgets);
             }
 
             if (start < end)
@@ -36,11 +36,11 @@ namespace BudgetSystem
                     var lastDayOfStartMonth =
                         new DateTime(start.Year, start.Month, DateTime.DaysInMonth(start.Year, start.Month));
                     var days = (lastDayOfStartMonth - start).Days + 1;
-                    amount += days * GetAmountForOneDay(start, allAmount);
+                    amount += days * GetAmountForOneDay(start, budgets);
 
                     var firstDayOfEndMonth = new DateTime(end.Year, end.Month, 1);
                     days = (end - firstDayOfEndMonth).Days + 1;
-                    amount += days * GetAmountForOneDay(end, allAmount);
+                    amount += days * GetAmountForOneDay(end, budgets);
 
                     var secondYearMonth = new DateTime(start.Year, start.Month + 1, 1);
                     var lastSecondEndYearMonth = new DateTime(end.Year, end.Month - 1, 1);
@@ -48,14 +48,14 @@ namespace BudgetSystem
                     while (secondYearMonth <= lastSecondEndYearMonth)
                     {
                         var yearMonth = secondYearMonth.ToString("yyyyMM");
-                        amount += GetAmountForAllMonth(allAmount, yearMonth);
+                        amount += GetAmountForAllMonth(budgets, yearMonth);
 
                         secondYearMonth = secondYearMonth.AddMonths(1);
                     }
                 }
                 else
                 {
-                    return ((end - start).Days + 1) * GetAmountForOneDay(start, allAmount);
+                    return ((end - start).Days + 1) * GetAmountForOneDay(start, budgets);
                 }
 
                 return amount;
