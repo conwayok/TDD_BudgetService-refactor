@@ -39,6 +39,38 @@ namespace BudgetSystem
             var query = _budgetService.Query(new DateTime(2021, 11, 01), new DateTime(2021, 12, 31));
             Assert.AreEqual(34000, query);
         }
+        [Test]
+        public void SameDate()
+        {
+            GenerateFakeData();
+            var query = _budgetService.Query(new DateTime(2021, 11, 01), new DateTime(2021, 11, 01));
+            Assert.AreEqual(100, query);
+        }
+        
+        [Test]
+        public void CrossPartialMonth()
+        {
+            GenerateFakeData();
+            var query = _budgetService.Query(new DateTime(2021, 11, 30), new DateTime(2021, 12, 02));
+            Assert.AreEqual(2100, query);
+        }
+        
+        [Test]
+        public void PartialMonth()
+        {
+            GenerateFakeData();
+            var query = _budgetService.Query(new DateTime(2021, 11, 01), new DateTime(2021, 11, 10));
+            Assert.AreEqual(1000, query);
+        }
+        
+        [Test]
+        public void EmptyData()
+        {
+            GenerateFakeData();
+            var query = _budgetService.Query(new DateTime(2021, 10, 01), new DateTime(2021, 10, 31));
+            Assert.AreEqual(0, query);
+        }
+
 
         private void GenerateFakeData()
         {
