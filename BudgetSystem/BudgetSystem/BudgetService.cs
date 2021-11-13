@@ -37,14 +37,14 @@ namespace BudgetSystem
                     {
                         var lastDayOfStartMonth =
                             new DateTime(start.Year, start.Month, DateTime.DaysInMonth(start.Year, start.Month));
-                        var days = (lastDayOfStartMonth - start).Days + 1;
-                        amount += days * GetAmountForOneDay(currentMonth, budgets);
+                        var overlappingDays = (lastDayOfStartMonth - start).Days + 1;
+                        amount += overlappingDays * GetAmountForOneDay(currentMonth, budgets);
                     }
                     else if (currentMonth.ToString("yyyyMM") == end.ToString("yyyyMM"))
                     {
                         var firstDayOfEndMonth = new DateTime(end.Year, end.Month, 1);
-                        var daysOfEndMonth = (end - firstDayOfEndMonth).Days + 1;
-                        amount += daysOfEndMonth * GetAmountForOneDay(currentMonth, budgets);
+                        var overlappingDays = (end - firstDayOfEndMonth).Days + 1;
+                        amount += overlappingDays * GetAmountForOneDay(currentMonth, budgets);
                     }
                     else
                     {
