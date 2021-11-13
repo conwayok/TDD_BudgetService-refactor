@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="893dd0c9-fc66-429e-864a-7107926f0932" name="Changes" comment="[refactor] use overlapping logic when middle months">
+    <list default="true" id="893dd0c9-fc66-429e-864a-7107926f0932" name="Changes" comment="[refactor] introduce parameter: budget of GetAmountForOneDay() and remove unused parameter: budgets">
       <change beforePath="$PROJECT_DIR$/BudgetSystem/BudgetService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BudgetSystem/BudgetService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,7 +194,28 @@
       <option name="project" value="LOCAL" />
       <updated>1636812161882</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="[refactor] remove duplication code by move out of if/else blocks">
+      <created>1636812226189</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1636812226189</updated>
+    </task>
+    <task id="LOCAL-00021" summary="[refactor] use the same logic of overlappingEnd when start and middle months">
+      <created>1636812300285</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1636812300285</updated>
+    </task>
+    <task id="LOCAL-00022" summary="[refactor] introduce parameter: budget of GetAmountForOneDay() and remove unused parameter: budgets">
+      <created>1636812494603</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1636812494603</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +269,9 @@
     <MESSAGE value="[refactor] rename variable by overlapping domain" />
     <MESSAGE value="[refactor] rename variable by overlapping domain when end month" />
     <MESSAGE value="[refactor] use overlapping logic when middle months" />
-    <option name="LAST_COMMIT_MESSAGE" value="[refactor] use overlapping logic when middle months" />
+    <MESSAGE value="[refactor] remove duplication code by move out of if/else blocks" />
+    <MESSAGE value="[refactor] use the same logic of overlappingEnd when start and middle months" />
+    <MESSAGE value="[refactor] introduce parameter: budget of GetAmountForOneDay() and remove unused parameter: budgets" />
+    <option name="LAST_COMMIT_MESSAGE" value="[refactor] introduce parameter: budget of GetAmountForOneDay() and remove unused parameter: budgets" />
   </component>
 </project>

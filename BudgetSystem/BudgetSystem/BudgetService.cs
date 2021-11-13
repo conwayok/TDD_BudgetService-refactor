@@ -56,10 +56,8 @@ namespace BudgetSystem
                     }
 
                     var overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
-                    amount += overlappingDays *
-                        GetAmountForOneDay(currentMonth,
-                                           budgets.FirstOrDefault(
-                                               x => x.YearMonth.Equals(currentMonth.ToString("yyyyMM"))));
+                    var budget = budgets.FirstOrDefault(x => x.YearMonth.Equals(currentMonth.ToString("yyyyMM")));
+                    amount += overlappingDays * GetAmountForOneDay(currentMonth, budget);
 
                     currentMonth = currentMonth.AddMonths(1);
                 }
