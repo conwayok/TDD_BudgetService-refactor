@@ -56,10 +56,10 @@ namespace BudgetSystem
                     else
                     {
                         overlappingStart = budget.FirstDay();
-                        // overlappingStart = new DateTime(currentMonth.Year, currentMonth.Month, 1);
 
-                        var daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
-                        overlappingEnd = new DateTime(currentMonth.Year, currentMonth.Month, daysInMonth);
+                        // var daysInMonth = DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month);
+                        // overlappingEnd = new DateTime(currentMonth.Year, currentMonth.Month, daysInMonth);
+                        overlappingEnd = budget.LastDay();
                     }
 
                     var overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
@@ -100,6 +100,12 @@ namespace BudgetSystem
         public DateTime FirstDay()
         {
             return DateTime.ParseExact(YearMonth + "01", "yyyyMMdd", null);
+        }
+
+        public DateTime LastDay()
+        {
+            var daysInMonth = DateTime.DaysInMonth(FirstDay().Year, FirstDay().Month);
+            return DateTime.ParseExact(YearMonth + daysInMonth, "yyyyMMdd", null);
         }
     }
 }
