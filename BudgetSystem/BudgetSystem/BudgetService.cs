@@ -38,15 +38,15 @@ namespace BudgetSystem
                 var daysOfEndMonth = (end - firstDayOfEndMonth).Days + 1;
                 amount += daysOfEndMonth * GetAmountForOneDay(end, budgets);
 
-                var secondYearMonth = new DateTime(start.Year, start.Month + 1, 1);
-                var lastSecondEndYearMonth = new DateTime(end.Year, end.Month - 1, 1);
+                var currentMonth = new DateTime(start.Year, start.Month + 1, 1);
+                var endFlag = new DateTime(end.Year, end.Month - 1, 1);
 
-                while (secondYearMonth <= lastSecondEndYearMonth)
+                while (currentMonth <= endFlag)
                 {
-                    var yearMonth = secondYearMonth.ToString("yyyyMM");
+                    var yearMonth = currentMonth.ToString("yyyyMM");
                     amount += GetAmountForAllMonth(budgets, yearMonth);
 
-                    secondYearMonth = secondYearMonth.AddMonths(1);
+                    currentMonth = currentMonth.AddMonths(1);
                 }
             }
             else
