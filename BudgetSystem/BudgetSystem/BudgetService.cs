@@ -34,6 +34,11 @@ namespace BudgetSystem
                 while (currentMonth <= end)
                 {
                     var budget = budgets.FirstOrDefault(x => x.YearMonth.Equals(currentMonth.ToString("yyyyMM")));
+                    if (budget == null)
+                    {
+                        continue;
+                    }
+
                     DateTime overlappingStart;
                     DateTime overlappingEnd;
                     if (currentMonth.ToString("yyyyMM") == start.ToString("yyyyMM"))
