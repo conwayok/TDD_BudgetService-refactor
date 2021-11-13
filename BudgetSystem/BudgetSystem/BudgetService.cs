@@ -39,9 +39,9 @@ namespace BudgetSystem
                 amount += daysOfEndMonth * GetAmountForOneDay(end, budgets);
 
                 var currentMonth = new DateTime(start.Year, start.Month + 1, 1);
-                var endFlag = new DateTime(end.Year, end.Month - 1, 1);
+                var endFlag = new DateTime(end.Year, end.Month, 1);
 
-                while (currentMonth <= endFlag)
+                while (currentMonth < endFlag)
                 {
                     var yearMonth = currentMonth.ToString("yyyyMM");
                     amount += GetAmountForAllMonth(budgets, yearMonth);
