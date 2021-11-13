@@ -26,7 +26,7 @@ namespace BudgetSystem
 
             var budgets = _budgetRepo.GetAll();
 
-            var amount = 0;
+            var amount = 0m;
             if (start.ToString("yyyyMM") != end.ToString("yyyyMM"))
             {
                 var currentMonth = new DateTime(start.Year, start.Month, 1);
@@ -40,8 +40,7 @@ namespace BudgetSystem
                     }
 
                     var overlappingDays = new Period(start, end).OverlappingDays(budget.CreatePeriod());
-                    amount += overlappingDays *
-                        (budget.Amount / budget.Days());
+                    amount += overlappingDays * DailyAmount(budget);
 
                     currentMonth = currentMonth.AddMonths(1);
                 }
@@ -54,6 +53,11 @@ namespace BudgetSystem
             }
 
             return amount;
+        }
+
+        private static decimal DailyAmount(Budget budget)
+        {
+            return budget.Amount / (decimal)budget.Days();
         }
 
         private int GetAmountForOneDay(DateTime start, Budget budget)
