@@ -8,6 +8,18 @@ using System.Linq;
 
 namespace BudgetSystem
 {
+    public class Period
+    {
+        public Period(DateTime start, DateTime end)
+        {
+            Start = start;
+            End = end;
+        }
+
+        public DateTime End { get; private set; }
+        public DateTime Start { get; private set; }
+    }
+
     public class BudgetService
     {
         private readonly IBudgetRepo _budgetRepo;
@@ -39,7 +51,7 @@ namespace BudgetSystem
                         continue;
                     }
 
-                    var overlappingDays = OverlappingDays(start, end, budget);
+                    var overlappingDays = OverlappingDays(new Period(start, end), budget);
                     amount += overlappingDays * GetAmountForOneDay(currentMonth, budget);
 
                     currentMonth = currentMonth.AddMonths(1);
@@ -55,19 +67,19 @@ namespace BudgetSystem
             return amount;
         }
 
-        private static int OverlappingDays(DateTime start, DateTime end, Budget budget)
+        private static int OverlappingDays(Period period, Budget budget)
         {
             DateTime overlappingStart;
             DateTime overlappingEnd;
-            if (budget.YearMonth == start.ToString("yyyyMM"))
+            if (budget.YearMonth == period.Start.ToString("yyyyMM"))
             {
-                overlappingStart = start;
+                overlappingStart = period.Start;
                 overlappingEnd = budget.LastDay();
             }
-            else if (budget.YearMonth == end.ToString("yyyyMM"))
+            else if (budget.YearMonth == period.End.ToString("yyyyMM"))
             {
                 overlappingStart = budget.FirstDay();
-                overlappingEnd = end;
+                overlappingEnd = period.End;
             }
             else
             {
