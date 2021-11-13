@@ -32,18 +32,22 @@ namespace BudgetSystem
                 var currentMonth = new DateTime(start.Year, start.Month, 1);
 
                 var period = new Period(start, end);
-                while (currentMonth <= end)
+                foreach (var budget in budgets)
                 {
-                    var budget = budgets.FirstOrDefault(x => x.YearMonth.Equals(currentMonth.ToString("yyyyMM")));
-                    if (budget == null)
-                    {
-                        continue;
-                    }
-
                     amount += budget.OverlappingAmount(period);
-
-                    currentMonth = currentMonth.AddMonths(1);
                 }
+                // while (currentMonth <= end)
+                // {
+                //     var budget = budgets.FirstOrDefault(x => x.YearMonth.Equals(currentMonth.ToString("yyyyMM")));
+                //     if (budget == null)
+                //     {
+                //         continue;
+                //     }
+                //
+                //     amount += budget.OverlappingAmount(period);
+                //
+                //     currentMonth = currentMonth.AddMonths(1);
+                // }
             }
             else
             {
